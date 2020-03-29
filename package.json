@@ -2,10 +2,12 @@
   "name": "roman-numeral-service",
   "version": "1.0.0",
   "description": "Convert numerals/numbers to/from roman/arabic",
+  "repository": "<github repo here...>",
   "main": "dist/server.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "tsc": "tsc",
+    "build": "tsc --sourceMap false",
     "start": "node ./dist/server.js"
   },
   "author": "",
