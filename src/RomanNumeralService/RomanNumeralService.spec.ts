@@ -75,9 +75,15 @@ describe("RomanNumeralService", () => {
 
     describe("when asked to convert arabic to roman", () => {
 
-        test("it converts arabic to roman", () => {
+        test("it converts to base symbols", () => {
 
-            expect(convertArabicToRoman(1)).toStrictEqual([ Roman.I ]);
+            expect(convertArabicToRoman(1)).toStrictEqual([ "I" ]);
+            expect(convertArabicToRoman(5)).toStrictEqual([ "V" ]);
+            expect(convertArabicToRoman(10)).toStrictEqual([ "X" ]);
+            expect(convertArabicToRoman(50)).toStrictEqual([ "L" ]);
+            expect(convertArabicToRoman(100)).toStrictEqual([ "C" ]);
+            expect(convertArabicToRoman(500)).toStrictEqual([ "D" ]);
+            expect(convertArabicToRoman(1000)).toStrictEqual([ "M" ]);
 
         });
 

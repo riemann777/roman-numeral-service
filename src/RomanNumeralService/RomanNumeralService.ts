@@ -20,6 +20,6 @@ const getMagnitude = (n: number) => {
 
 
 export const convertArabicToRoman = (arabic: number) => {
-    console.log(arabic);
-    return [ Roman.I ];
+    // console.log(arabic);
+    return [ Roman[arabic] ];
 };
