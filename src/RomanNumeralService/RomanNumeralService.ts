@@ -22,7 +22,7 @@ export const getMagnitude = (n: number) => {
 
 export const convertArabicToRoman = (arabic: number) => {
     // console.log(arabic);
-    const arabicAtoms: number[] = [ Roman.V, Roman.I ];//[Roman.M, Roman.D, Roman.C, Roman.L, Roman.X, Roman.V, Roman.I];
+    const arabicAtoms: number[] = [Roman.V, Roman.I ]; // [Roman.M, Roman.D, Roman.C, Roman.L, Roman.X, Roman.V, Roman.I];
 
     return R.reduce((conversions: any, arabicAtom: any): any => {
 
@@ -33,7 +33,9 @@ export const convertArabicToRoman = (arabic: number) => {
 
 const convertForArabicAtom = (arabic: number, arabicAtom: Roman, conversions: Roman[] = []): any => {
 
-    return ((arabic - arabicAtom) < 0)
+    return (arabic - arabicAtom) < -1 || (arabicAtom === Roman.I && (arabic - arabicAtom) < 0)
         ? conversions
-        : convertForArabicAtom(arabic - arabicAtom, arabicAtom, conversions.concat(arabicAtom))
+        : (arabicAtom !== Roman.I && (arabic - arabicAtom) === - 1)
+            ? convertForArabicAtom(arabic - arabicAtom, arabicAtom, conversions.concat(arabicAtom / arabicAtom).concat(arabicAtom))
+            : convertForArabicAtom(arabic - arabicAtom, arabicAtom, conversions.concat(arabicAtom))
 };

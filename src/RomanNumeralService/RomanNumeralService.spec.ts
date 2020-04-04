@@ -79,11 +79,11 @@ describe("RomanNumeralService", () => {
 
             expect(convertArabicToRoman(1)).toStrictEqual([ Roman.I ]);
             expect(convertArabicToRoman(5)).toStrictEqual([ Roman.V ]);
-            // expect(convertArabicToRoman(10)).toBe([ Roman.X ]);
-            // expect(convertArabicToRoman(50)).toBe([ Roman.L ]);
-            // expect(convertArabicToRoman(100)).toBe([ Roman.C ]);
-            // expect(convertArabicToRoman(500)).toBe([ Roman.D ]);
-            // expect(convertArabicToRoman(1000)).toBe([ Roman.M ]);
+            // expect(convertArabicToRoman(10)).toStrictEqual([ Roman.X ]);
+            // expect(convertArabicToRoman(50)).toStrictEqual([ Roman.L ]);
+            // expect(convertArabicToRoman(100)).toStrictEqual([ Roman.C ]);
+            // expect(convertArabicToRoman(500)).toStrictEqual([ Roman.D ]);
+            // expect(convertArabicToRoman(1000)).toStrictEqual([ Roman.M ]);
 
         });
 
@@ -94,6 +94,12 @@ describe("RomanNumeralService", () => {
             expect(convertArabicToRoman(6)).toStrictEqual([ Roman.V, Roman.I ]);
             expect(convertArabicToRoman(7)).toStrictEqual([ Roman.V, Roman.I, Roman.I ]);
             expect(convertArabicToRoman(8)).toStrictEqual([ Roman.V, Roman.I, Roman.I, Roman.I ]);
+
+        });
+
+        test("it converts simple subtractive symbol combinations", () => {
+
+            expect(convertArabicToRoman(4)).toStrictEqual([ Roman.I, Roman.V ]);
 
         });
 
