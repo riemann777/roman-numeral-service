@@ -21,8 +21,8 @@ export const getMagnitude = (n: number) => {
 
 
 export const convertArabicToRoman = (arabic: number) => {
-    // console.log(arabic);
-    const arabicAtoms: number[] = [Roman.V, Roman.I ]; // [Roman.M, Roman.D, Roman.C, Roman.L, Roman.X, Roman.V, Roman.I];
+
+    const arabicAtoms: number[] = [Roman.M, Roman.D, Roman.C, Roman.L, Roman.X, Roman.V, Roman.I];
 
     return R.reduce((conversions: any, arabicAtom: any): any => {
 
