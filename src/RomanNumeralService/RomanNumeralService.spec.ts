@@ -1,5 +1,13 @@
-import { convertRomanToArabic, convertArabicToRoman } from './RomanNumeralService';
+import {
+    convertRomanToArabic,
+    convertArabicToRoman,
+    convertForArabicAtom,
+    isFullyReducedByAtom,
+    subtractiveNotationRequired,
+    getSubtractiveAtomValue
+} from './RomanNumeralService';
 import { RomanNumeralSymbol as Roman } from "./RomanNumeralSymbol";
+
 
 describe("RomanNumeralService", () => {
 
@@ -72,7 +80,6 @@ describe("RomanNumeralService", () => {
 
     });
 
-
     describe("when asked to convert arabic to roman", () => {
 
         test("it converts to base symbols", () => {
@@ -114,9 +121,54 @@ describe("RomanNumeralService", () => {
 
         });
 
+        test("it should know when to stop reducing arabic number by atom", () => {
+
+            expect(isFullyReducedByAtom(0, 5)).toBe(true);
+            expect(isFullyReducedByAtom(0, 1)).toBe(true);
+            expect(isFullyReducedByAtom(461, 1000)).toBe(true);
+            expect(isFullyReducedByAtom(0, 10)).toBe(true);
+            expect(isFullyReducedByAtom(5, 5)).toBe(false);
+            expect(isFullyReducedByAtom(461, 500)).toBe(false);
+            expect(isFullyReducedByAtom(1, 1)).toBe(false);
+            expect(isFullyReducedByAtom(4, 5)).toBe(false);
+            expect(isFullyReducedByAtom(9, 10)).toBe(false);
+
+        });
+
+        test("it should get correct subtractive atom for current atom", () => {
+
+            expect(getSubtractiveAtomValue(1000)).toBe(100);
+            expect(getSubtractiveAtomValue(500)).toBe(100);
+            expect(getSubtractiveAtomValue(100)).toBe(10);
+            expect(getSubtractiveAtomValue(50)).toBe(10);
+            expect(getSubtractiveAtomValue(10)).toBe(1);
+            expect(getSubtractiveAtomValue(5)).toBe(1);
+
+        });
+
+        test("it should know when subtractive notation is required", () => {
+
+            expect(subtractiveNotationRequired(5, 5)).toBe(false);
+            expect(subtractiveNotationRequired(1, 1)).toBe(false);
+            expect(subtractiveNotationRequired(461, 500)).toBe(true);
+            expect(subtractiveNotationRequired(4, 5)).toBe(true);
+            expect(subtractiveNotationRequired(9, 10)).toBe(true);
+            expect(subtractiveNotationRequired(461, 500)).toBe(true);
+            expect(subtractiveNotationRequired(0, 1)).toBe(false);
+
+        });
+
+        test("it should convert/reduce arabic value completely by current atom", () => {
+
+            expect(convertForArabicAtom(5, 5)).toStrictEqual([ Roman.V ]);
+            expect(convertForArabicAtom(3461, 1000)).toStrictEqual([ Roman.M, Roman.M, Roman.M ]);
+            expect(convertForArabicAtom(461, 500)).toStrictEqual([ Roman.C, Roman.D ]);
+        });
+
         test("it converts simple subtractive symbol combinations", () => {
 
             expect(convertArabicToRoman(4)).toStrictEqual([ Roman.I, Roman.V ]);
+            expect(convertArabicToRoman(94)).toStrictEqual([ Roman.X, Roman.C, Roman.I, Roman.V ]);
 
         });
 
