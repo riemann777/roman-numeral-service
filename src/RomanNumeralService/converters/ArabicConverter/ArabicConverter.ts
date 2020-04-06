@@ -7,8 +7,8 @@ const defaultAtoms = [ Roman.M, Roman.D, Roman.C, Roman.L, Roman.X, Roman.V, Rom
 
 export const arabicConverter = (arabic: number, arabicAtoms: number[] = defaultAtoms) =>
     R.reduce((conversions: any, arabicAtom: any): any =>
-            conversions.concat(convertForArabicAtom(arabic - romanConverter(conversions), arabicAtom))
-        , [], arabicAtoms);
+        conversions.concat(convertForArabicAtom(arabic - romanConverter(conversions), arabicAtom))
+    , [], arabicAtoms);
 
 
 export const convertForArabicAtom = (arabic: number, arabicAtom: Roman, conversions: Roman[] = []): any =>
