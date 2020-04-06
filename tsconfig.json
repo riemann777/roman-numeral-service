@@ -15,7 +15,8 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "importHelpers": true
   },
   "exclude": [
     "node_modules",
