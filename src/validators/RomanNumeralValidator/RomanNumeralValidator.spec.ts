@@ -1,9 +1,9 @@
-import {romanNumeralValidator} from "./RomanNumeralValidator";
+import { romanNumeralValidator } from "./RomanNumeralValidator";
 
 
 describe("ArabicNumberValidator", () => {
 
-    describe("when asked validate input that contains non roman symbols", () => {
+    describe("when asked to validate input that contains non roman symbols", () => {
 
         test("it should return false", () => {
 
@@ -15,7 +15,7 @@ describe("ArabicNumberValidator", () => {
 
     });
 
-    describe("when asked validate input that contains too many or too few symbols", () => {
+    describe("when asked to validate input that contains too many or too few symbols", () => {
 
         test("it should return false", () => {
 
@@ -26,7 +26,7 @@ describe("ArabicNumberValidator", () => {
 
     });
 
-    describe("when asked validate input with more than 3 of the same symbol in succession", () => {
+    describe("when asked to validate input with more than 3 of the same symbol in succession", () => {
 
         test("it should return false", () => {
 
@@ -37,12 +37,26 @@ describe("ArabicNumberValidator", () => {
 
     });
 
-    describe("when asked validate input that is valid", () => {
+    describe("when asked to validate input with invalid subtractive notation", () => {
+
+        test.only("it should return false", () => {
+
+            expect(romanNumeralValidator("VL")).toBe(false);
+            expect(romanNumeralValidator("MMMMLCXXXVXI")).toBe(false);
+            expect(romanNumeralValidator("XMID")).toBe(false);
+            expect(romanNumeralValidator("XMIIV")).toBe(false);
+
+        });
+
+    });
+
+    describe("when asked to validate input that is valid", () => {
 
         test("it should return true", () => {
 
             expect(romanNumeralValidator("III")).toBe(true);
             expect(romanNumeralValidator("MMMDCCCLXXXVIII")).toBe(true);
+            expect(romanNumeralValidator("CMIV")).toBe(false);
 
         });
 
