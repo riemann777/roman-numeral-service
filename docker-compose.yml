@@ -1,0 +1,27 @@
+version: '2.0'
+
+services:
+
+  roman_numeral_service:
+    build: .
+    user: "1001"
+    environment:
+      MONGO_CONNECTION_URL: $MONGO_CONNECTION_URL
+    ports:
+      - "8080:8000"
+    depends_on:
+      - "conversion_store"
+
+  conversion_store:
+    image: mongo
+#    environment:
+#      MONGO_INITDB_DATABASE: $MONGO_DB_NAME
+#      MONGO_INITDB_ROOT_USERNAME: $MONGO_ADMIN
+#      MONGO_INITDB_ROOT_PASSWORD: $MONGO_ADMIN_PASSWORD
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-db:/data/db
+
+volumes:
+  data-db:
