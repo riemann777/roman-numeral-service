@@ -6,3 +6,4 @@ dist/
 .gitignore
 docker-compose.yml
 config.json
+static/

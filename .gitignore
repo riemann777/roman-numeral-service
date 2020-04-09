@@ -4,3 +4,4 @@ sandbox/
 dist/
 data-db/
 config.json
+static/
