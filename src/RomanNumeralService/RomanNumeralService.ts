@@ -9,5 +9,6 @@ export const convertRomanToArabic = (romanStr: string): number =>
     )(romanStr.split(""));
 
 export const convertArabicToRoman = (arabicVal: number): string =>
-    R.map((arabicAtom: number) => Roman[arabicAtom], arabicConverter(arabicVal)).join("");
+    R.map((arabicAtom: number) =>
+        Roman[arabicAtom], arabicConverter(arabicVal)).join("");
 
