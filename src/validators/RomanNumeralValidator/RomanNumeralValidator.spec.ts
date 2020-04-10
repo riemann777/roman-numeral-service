@@ -1,7 +1,7 @@
 import { romanNumeralValidator } from "./RomanNumeralValidator";
 
 
-describe("ArabicNumberValidator", () => {
+describe("RomanNumeralValidator", () => {
 
     describe("when asked to validate input that contains non roman symbols", () => {
 
@@ -39,7 +39,7 @@ describe("ArabicNumberValidator", () => {
 
     describe("when asked to validate input with invalid subtractive notation", () => {
 
-        test.only("it should return false", () => {
+        test("it should return false", () => {
 
             expect(romanNumeralValidator("VL")).toBe(false);
             expect(romanNumeralValidator("MMMMLCXXXVXI")).toBe(false);
@@ -56,7 +56,7 @@ describe("ArabicNumberValidator", () => {
 
             expect(romanNumeralValidator("III")).toBe(true);
             expect(romanNumeralValidator("MMMDCCCLXXXVIII")).toBe(true);
-            expect(romanNumeralValidator("CMIV")).toBe(false);
+            expect(romanNumeralValidator("CMIV")).toBe(true);
 
         });
 
