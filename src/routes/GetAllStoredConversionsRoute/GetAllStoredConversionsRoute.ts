@@ -1,0 +1,3 @@
+
+
+// server.get('/all', respond);

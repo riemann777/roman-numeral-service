@@ -1,0 +1,2 @@
+
+// server.delete('/remove', respond);
