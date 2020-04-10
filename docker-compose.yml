@@ -5,8 +5,10 @@ services:
   roman_numeral_service:
     build: .
     user: "1001"
-#    environment:
-#      MONGO_CONNECTION_URL: $MONGO_CONNECTION_URL
+    environment:
+      MONGO_CONNECTION_URL: "mongodb://conversion_store:27017"
+      CONVERSION_STORE_DB_NAME: "conversionStore"
+      CONVERSION_STORE_COLLECTION_NAME: "conversions"
     ports:
       - "8080:8000"
     depends_on:
@@ -26,7 +28,7 @@ services:
   roman_numeral_frontend:
     image: roman_numeral_frontend
     ports:
-      - "3000:80"
+      - "3000 :80"
     depends_on:
       - "roman_numeral_service"
 
