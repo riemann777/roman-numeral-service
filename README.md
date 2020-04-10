@@ -26,3 +26,5 @@ docker clean up: `docker stop roman-numeral-api && docker rm roman-numeral-api`
 # to run full service w/ UI
 To run API, UI, & DB use `docker-compose up -d --build -V`, 
 and to stop services and clean up `docker-compose down`
+
+once all containers are running, access UI on localhost:3000

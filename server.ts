@@ -8,7 +8,7 @@ import { arabicNumberValidator as isValidArabic } from "./src/validators/ArabicN
 const server: any = restify.createServer();
 
 const cors = corsMiddleware({
-    origins: ["http://localhost:3000", "http://localhost:63342"],
+    origins: ["http://localhost:3000"],
     allowHeaders: [],
     exposeHeaders: []
 });
